@@ -1,9 +1,8 @@
-# Copyright 2020 Amazon.com, Inc. or its affiliates. All Rights Reserved.
+# Copyright 2021 Amazon.com, Inc. or its affiliates. All Rights Reserved.
 # SPDX-License-Identifier: Apache-2.0
 
-FROM busybox
+FROM python:3.7.9-alpine3.12
 
-ENV HELLO="Hello from the enclave side!"
-COPY hello.sh /bin/hello.sh
+COPY vsock-sample.py .
 
-CMD ["/bin/hello.sh"]
+CMD ["/usr/local/bin/python3", "vsock-sample.py", "server", "5005"]
